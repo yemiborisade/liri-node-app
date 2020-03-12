@@ -1,6 +1,5 @@
-// DEPENDENCIES
-// =====================================
-// Read and set environment variables
+
+
 require("dotenv").config();
 
 // Import the node-spotify-api NPM package.
@@ -21,15 +20,13 @@ var fs = require("fs");
 // Initialize the spotify API client using our client id and secret
 var spotify = new Spotify(keys.spotify);
 
-// FUNCTIONS
-// =====================================
 
-// Helper function that gets the artist name
+// artist name
 var getArtistNames = function(artist) {
   return artist.name;
 };
 
-// Function for running a Spotify search
+// Spotify search
 var getMeSpotify = function(songName) {
   if (songName === undefined) {
     songName = "What's my age again";
@@ -94,7 +91,7 @@ var getMyBands = function(artist) {
   );
 };
 
-// Function for running a Movie Search
+// Movie Search
 var getMeMovie = function(movieName) {
   if (movieName === undefined) {
     movieName = "Mr Nobody";
@@ -120,7 +117,7 @@ var getMeMovie = function(movieName) {
   );
 };
 
-// Function for running a command based on text file
+
 var doWhatItSays = function() {
   fs.readFile("random.txt", "utf8", function(error, data) {
     console.log(data);
@@ -135,7 +132,7 @@ var doWhatItSays = function() {
   });
 };
 
-// Function for determining which command is executed
+// determine which command is executed
 var pick = function(caseData, functionData) {
   switch (caseData) {
   case "concert-this":
@@ -155,11 +152,10 @@ var pick = function(caseData, functionData) {
   }
 };
 
-// Function which takes in command line arguments and executes correct function accordingly
+// takes in command line arguments and executes correct function accordingly
 var runThis = function(argOne, argTwo) {
   pick(argOne, argTwo);
 };
 
-// MAIN PROCESS
-// =====================================
+
 runThis(process.argv[2], process.argv.slice(3).join(" "));
